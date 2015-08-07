@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+
+        <title>Ssoa Run</title>
+    </head>
+    <body>
+        <div id="container"></div>
+
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="js/libs/phaser.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/libs/jquery.event.gevent.js"></script>
+
+        <script type="text/javascript" src="js/characters/Character.js"></script>
+        <script type="text/javascript" src="js/characters/Mach.js"></script>
+        <script type="text/javascript" src="js/characters/Monster.js"></script>
+        <script type="text/javascript" src="js/characters/CoffeeBoy.js"></script>
+        <script type="text/javascript" src="js/characters/Macaron.js"></script>
+        <script type="text/javascript" src="js/characters/Space.js"></script>
+        <script type="text/javascript" src="js/characters/Happy.js"></script>
+        <script type="text/javascript" src="js/characters/Master.js"></script>
+        <script type="text/javascript" src="js/characters/Vika.js"></script>
+        <script type="text/javascript" src="js/characters/Mika.js"></script>
+        <script type="text/javascript" src="js/characters/Heyboo.js"></script>
+        <script type="text/javascript" src="js/characters/Sera.js"></script>
+        <script type="text/javascript" src="js/characters/Lupa.js"></script>
+        <script type="text/javascript" src="js/characters/Taku.js"></script>
+        <script type="text/javascript" src="js/characters/Shorty.js"></script>
+
+        <script type="text/javascript" src="js/skills/Skill.js"></script>
+        <script type="text/javascript" src="js/skills/GetOrder.js"></script>
+        <script type="text/javascript" src="js/skills/GetHit.js"></script>
+        <script type="text/javascript" src="js/skills/SugarAttack.js"></script>
+        <script type="text/javascript" src="js/skills/EyeBeam.js"></script>
+        <script type="text/javascript" src="js/skills/SpaceGun.js"></script>
+        <script type="text/javascript" src="js/skills/Equality.js"></script>
+        <script type="text/javascript" src="js/skills/Hentai.js"></script>
+        <script type="text/javascript" src="js/skills/SwordAttack.js"></script>
+        <script type="text/javascript" src="js/skills/Change.js"></script>
+        <script type="text/javascript" src="js/skills/SnowBlow.js"></script>
+        <script type="text/javascript" src="js/skills/Transform.js"></script>
+        <script type="text/javascript" src="js/skills/BurningSpear.js"></script>
+        <script type="text/javascript" src="js/skills/LoveBeam.js"></script>
+        <script type="text/javascript" src="js/skills/SuperJump.js"></script>
+
+        <script type="text/javascript" src="js/Boot.js"></script>
+        <script type="text/javascript" src="js/Preloader.js"></script>
+        <script type="text/javascript" src="js/Game.js"></script>
+
+        <script type="text/javascript">
+            (function () {
+                //	Create your Phaser game and inject it into the game div.
+                //	We did it in a window.onload event, but you can do it anywhere (requireJS load, anonymous function, jQuery dom ready, - whatever floats your boat)
+                //	We're using a game size of 1024 x 768 here, but you can use whatever you feel makes sense for your game of course.
+                var game = new Phaser.Game(1024, 768, Phaser.AUTO, 'container');
+                //	Add the States your game has.
+                //	You don't have to do this in the html, it could be done in your Boot state too, but for simplicity I'll keep it here.
+                game.state.add('Boot', Context.Boot);
+                game.state.add('Preloader', Context.Preloader);
+//                game.state.add('MainMenu', BasicGame.MainMenu);
+                game.state.add('Game', Context.Game);
+                //	Now start the Boot state.
+                game.state.start('Boot');
+            })();
+        </script>
+    </body>
+</html>
